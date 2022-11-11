@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<nav>
+<ul class="tabs">
+  <li><a  data-cont=".x1" class="active" >Permutation de deux nombres</a></li>
+  <li><a data-cont=".x2"  >Valider une date</a></li>
+  <li><a  data-cont=".x3"   >Table de multiplication</a></li>
+  <li><a  data-cont=".x4"   >Devine le nombre !</a></li>
+  <li><a  data-cont=".x5"  >Losange en étoiles</a></li>
+  <li><a  data-cont=".x6"  >Calculatrice</a></li>
+  <li><a  data-cont=".x7"  >Recherche et suppression dans une chaine</a></li>
+  <li><a  data-cont=".x8"  >Compter le nombre de voyelles dans une chaine</a></li>
+  <li><a  data-cont=".x9"  >Tri d’un tableau</a></li>
+  <li><a  data-cont=".x10"  >Recherche dans un tableau</a></li>
+</ul>
+</nav>
+<main class="content">
+  <section class="x1"  >
+    <h1>Permutation de deux nombres</h1>
+    <br><br>
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p> 
+        Ecrire un script qui permute deux nombres saisis dans deux inputs
+      </p>
+    </div>
+    <br><br>
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+      <div class="d-flex">
+        <div>
+          <label for="Nombre1"> Nombre 1 : </label> <br>
+          <input type="text" id="Nombre1">
+        </div>
+        <div class="center-item ">
+                            <br>
+          <button onclick="myFunction()" > > </button>
+        </div>
+        <div>
+          <label for="Nombre2"> Nombre 2 : </label> <br>
+          <input type="text" id="Nombre2">
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>  
+        function myFunction() {
+          var x = Nombre1.value;
+          var y = Nombre2.value;
+          var temp;
+          temp = x;
+          x = y;
+          y = temp;
+          Nombre1.value = x;
+          Nombre2.value = y;
+        }
+      </pre>
+    </div>
+    <script>
+      function myFunction() {
+        var x = Nombre1.value;
+        var y = Nombre2.value;
+        var temp;
+        temp = x;
+        x = y;
+        y = temp;
+        Nombre1.value = x;
+        Nombre2.value = y;
+      }
+    </script>
+  </section>
+  <section class="x2" >
+    <h1>Valider une date</h1>
+    <br><br>
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+        Ecrire un script qui permet de saisir les trois champs d’une date (jour, mois et année) et d’indiquer si la date est correcte ou non
+      </div>
+    <br><br>
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+        <label for="Jour">Jour :</label>
+        <input type="text"  id="Jour" >
+  <br>
+        <label for="Mois">Mois :</label>
+        <input type="text"  id="Mois"  >
+  <br>
+        <div class="d-flex" >
+       <div> 
+          <label for="Annee">Année :</label>
+        <input type="text"  id="Annee"  >
+      </div>
+      <button    onclick="datevalidation();" >Valider</button>
+      </div>
+      <p><b id="datevalidationresult" >31/09/2022 est incorrecte !!</b></p>
+    </div>
+    <br><br>
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>  
+        function datevalidation() {
+          // var date;
+          // var j, m, a;
+        let j = Number(Jour.value);
+        let m = Number(Mois.value);
+        let a = Number(Annee.value);
+      let fulldate = m + "/" + j + "/" + a ;
+          var bissextille, cas1, cas2, cas3, cas4;
+          bissextille = a % 400 == 0 || a % 4 == 0 && a % 100 != 0;
+          cas1 = a > 0 && (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && (j >= 1 && j <= 31);
+          cas2 = a > 0 && (m == 4 || m == 6 || m == 9 || m == 11) && (j >= 1 && j <= 30);
+          cas3 = a > 0 && m == 2 && !bissextille && (j >= 1 && j <= 28);
+          cas4 = a > 0 && m == 2 && bissextille && (j >= 1 && j <= 29);
+          if (cas1 || cas2 || cas3 || cas4) {
+            datevalidationresult.innerHTML = fulldate + " La date est valide." ;
+          } else {
+      datevalidationresult.innerHTML = fulldate + " La date est invalide!! " ;
+          }
+      }
+      </pre>
+    </div>
+<script>
+function datevalidation() {
+    // var date;
+    // var j, m, a;
+  let j = Number(Jour.value);
+  let m = Number(Mois.value);
+  let a = Number(Annee.value);
+let fulldate = m + "/" + j + "/" + a ;
+    var bissextille, cas1, cas2, cas3, cas4;
+    bissextille = a % 400 == 0 || a % 4 == 0 && a % 100 != 0;
+    cas1 = a > 0 && (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && (j >= 1 && j <= 31);
+    cas2 = a > 0 && (m == 4 || m == 6 || m == 9 || m == 11) && (j >= 1 && j <= 30);
+    cas3 = a > 0 && m == 2 && !bissextille && (j >= 1 && j <= 28);
+    cas4 = a > 0 && m == 2 && bissextille && (j >= 1 && j <= 29);
+    if (cas1 || cas2 || cas3 || cas4) {
+      datevalidationresult.innerHTML = fulldate + " La date est valide." ;
+    } else {
+datevalidationresult.innerHTML = fulldate + " La date est invalide!! " ;
+    }
+}
+</script>
+  </section>
+  <section  class="x3" >
+    <h1>Table de multiplication</h1>
+    <br /><br />
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p>
+        Afficher la table de multiplication d’un nombre saisi par
+        l’utilisateur dans un input.
+      </p>
+    </div>
+    <br /><br />
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+      <input id="numbertomulti" type="text" value="3" />
+      <button onclick="Affichertablemulti();">Générer la table</button>
+      <br />
+      <div id="herethemulti"></div>
+    </div>
+    <br /><br />
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>
+        function Affichertablemulti() {
+          herethemulti.innerHTML = "";
+          var table = numbertomulti.value;
+          for (var i = 1; i <= 10; i++) {
+            herethemulti.innerHTML +=
+            table + " x " + i + " = " + i * table + "<br>";
+          }
+        }
+        </pre
+      >
+    </div>
+<script>
+    function Affichertablemulti() {
+      herethemulti.innerHTML = "";
+      var table = numbertomulti.value;
+      for (var i = 1; i <= 10; i++) {
+        herethemulti.innerHTML +=
+        table + " x " + i + " = " + i * table + "<br>";
+      }
+    }
+  </script>
+  </section>
+  <section  class="x4" >
+    <h1>Devine le nombre !</h1>
+    <br><br>
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p> 
+        L’utilisateur doit deviner un nombre entre 1 et 50 que le programme a choisi aléatoirement en 10 tentatives. Quand l’utilisateur entre une valeur, on lui affiche le nombre de tentatives restantes, ainsi qu’un message indiquant si sa réponse est correcte ou pas.
+      </p>
+    </div>
+    <br><br>
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+        <p>Tentatives restantes :  <span id="numberofthetries">10</span> /10</p>
+    <br>
+        <input id="NumbertestValue" type="text">
+        <button id="theplayerbtn" onclick="NumberTest()"> Envoyer</button>
+<br>
+        <p id="NumberTestResult">Réssayez encore !</p>
+    </div>
+    <br><br>
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>
+        const randomNumber = Math.floor(Math.random() * 50) + 1;
+        console.log(randomNumber);
+        let i = 10 ;
+        function NumberTest() {
+        i--;
+        numberofthetries.innerHTML = i ;
+        while( i >= 0){
+        if(i <= 0){
+        NumberTestResult.innerHTML = "Game Over!";
+        theplayerbtn.outerHTML ="";        
+        break;
+        }
+        if(NumbertestValue.value == randomNumber ){
+        NumberTestResult.innerHTML = "Bravo!";
+        break;
+        } else {
+        NumberTestResult.innerHTML = "";
+        setTimeout(() => {
+        NumberTestResult.innerHTML = "Try again!";
+        }, 200);
+        break;
+        }
+        }
+        }
+      </pre>
+    </div>
+    <script>
+const randomNumber = Math.floor(Math.random() * 50) + 1;
+console.log(randomNumber);
+let i = 10 ;
+function NumberTest() {
+i--;
+numberofthetries.innerHTML = i ;
+while( i >= 0){
+if(i <= 0){
+NumberTestResult.innerHTML = "Game Over!";
+theplayerbtn.outerHTML ="";
+console.log(i);
+break;
+}
+if(NumbertestValue.value == randomNumber ){
+NumberTestResult.innerHTML = "Bravo!";
+console.log(i);
+break;
+} else {
+NumberTestResult.innerHTML = "";
+setTimeout(() => {
+NumberTestResult.innerHTML = "Try again!";
+}, 200);
+console.log(i);
+break;
+}
+}
+}
+    </script>
+  </section>
+  <section class="x5" >
+    <h1>Losange en étoiles</h1>
+    <br><br>
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p> 
+        Ce programme a pour objectif de dessiner un losange en étoiles dont la longueur des diagonales est un nombre impair saisi par l’utilsateur. Dans le cas où l’utilisateur entre un nombre pair, il faut afficher une erreur.         
+    </p>
+    </div>
+    <br><br>
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+<div class="d-flex" >
+<div>
+    <p>Saisir la longueur des diagonales </p>
+</div>
+<div>
+    <input id="startinput" type="text" value="5">
+</div>
+<div class="center-item ">
+    <button onclick="starmaker();" >Dessiner</button>
+</div>
+</div>
+<div id="starresult" >
+         *
+        ***
+       *****
+        ***
+         *
+</div>
+    </div>
+    <br><br>
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>  
+document.getElementById('demo');
+</pre>
+    </div>
+<script>
+function diamond(val){
+  var y, w, shape = '';
+  for(y = 0; y < val * 2 - 1; y = y + 2) {
+    w = y < val ? y : val * 2 - y - 2;
+    shape += Array(val - w).join(' ') + Array(w + 1).join('* ') + '*\n';
+  }
+  starresult.innerHTML =   '<pre>' + shape + '</pre>';
+}
+function starmaker(){
+  diamond(Number(startinput.value));
+}
+</script>
+  </section>
+  <section class="x6" >
+    <h1>Calculatrice</h1>
+    <br /><br />
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p>
+        Créez 4 fonctions Javascript (Somme, Soustraction, Division,
+        Multiplication). L’utilisateur saisie deux nombres dans deux inputs,
+        choisi ensuite une opération arithmétique. Le résultat est donné par
+        l’une des 4 fonctions Javascript.
+      </p>
+    </div>
+    <br /><br />
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+      <input id="operator1" type="text" value="12" />
+      <input id="operator2" type="text" value="3" />
+      <br />
+      <br />
+      <button onclick="sum ()">+</button>
+      <button onclick="less ()">-</button>
+      <button onclick="multiply ()">x</button>
+      <button onclick="divide ()">/</button>
+      <br />
+      <br />
+      <input id="operationresult" type="text" value="15" />
+    </div>
+    <br /><br />
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>
+        function sum() {
+          operationresult.value = +operator1.value + +operator2.value;
+        }
+        function less () {
+          operationresult.value = +operator1.value - +operator2.value;
+        }
+        function multiply () {
+          operationresult.value = +operator1.value * +operator2.value;
+        }
+        function divide () {
+          operationresult.value = +operator1.value / +operator2.value;
+        }
+        </pre
+      >
+    </div>
+  <script>
+    function sum() {
+      operationresult.value = +operator1.value + +operator2.value;
+    }
+    function less () {
+      operationresult.value = +operator1.value - +operator2.value;
+    }
+    function multiply () {
+      operationresult.value = +operator1.value * +operator2.value;
+    }
+    function divide () {
+      operationresult.value = +operator1.value / +operator2.value;
+    }
+  </script>
+  </section>
+  <section class="x7" >
+    <h1>Recherche et suppression dans une chaine</h1>
+    <br><br>
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p> 
+        Ecrire un programme Javascript qui demande à l’utilisateur de saisir une phrase dans une zone de texte et un mot dans une autre zone de texte. Le clique sur le bouton rechercher affiche un message si le mot existe dans la phrase ou non. Le clique sur le bouton supprimer permet d’effacer toutes les occurrence du mot dans la phrase ( si le mot existe bien sûr). 
+      </p>
+    </div>
+    <br><br>
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+<div class="d-flex" >
+    <div>
+        <p>Saisir une phrase</p>
+    </div>
+    <div class="width30">
+        <input id="laphrase" class="width90" type="text" >
+    </div>
+    <div class="center-item ">
+        <button onclick="searchinsidethephrase();">Rechercher </button>
+    </div>
+    </div>
+<div class="d-flex" >
+    <div>
+        <p>Saisir le mot à rechercher ou à supprimer</p>
+    </div>
+    <div>
+        <input id="motasupprimer" type="text" >
+    </div>
+    <div class="center-item ">
+        <button  onclick="deletethekeyword();">Supprimer les occurences</button>
+    </div>
+    </div>
+    <br><br>
+    <div class="darkbg" >
+        <p  id="letextexistounon">Le message de recherche s’affiche ici   </p>
+            <p id="thenewphrase"> Ou la nouvelle phrase après la suppression des occurences </p>
+    </div>
+    </div>
+    <br><br>
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>     
+function searchinsidethephrase(){
+  let laphrasevalue = laphrase.value;
+let motasupprimervalue = motasupprimer.value;
+  if (laphrasevalue.includes(motasupprimervalue) == true ) {
+    letextexistounon.innerHTML = " the keyword " + motasupprimervalue + " found ";
+  } else {
+    letextexistounon.innerHTML = " this keyword " + motasupprimervalue + " not found ";
+  }
+}
+function deletethekeyword(){
+  let laphrasevalue = laphrase.value;
+let motasupprimervalue = motasupprimer.value;
+thenewphrase.innerHTML = laphrasevalue.replace(motasupprimervalue,"")
+// thenewphrase.innerHTML = laphrasevalue.replaceAll(motasupprimervalue,"")
+}
+</pre>
+    </div>
+<script>
+function searchinsidethephrase(){
+  let laphrasevalue = laphrase.value;
+let motasupprimervalue = motasupprimer.value;
+  if (laphrasevalue.includes(motasupprimervalue) == true ) {
+    letextexistounon.innerHTML = " the keyword " + motasupprimervalue + " found ";
+  } else {
+    letextexistounon.innerHTML = " this keyword " + motasupprimervalue + " not found ";
+  }
+}
+function deletethekeyword(){
+  let laphrasevalue = laphrase.value;
+let motasupprimervalue = motasupprimer.value;
+thenewphrase.innerHTML = laphrasevalue.replace(motasupprimervalue,"")
+// thenewphrase.innerHTML = laphrasevalue.replaceAll(motasupprimervalue,"")
+}
+</script>
+  </section>
+  <section class="x8">
+    <h1>Compter le nombre de voyelles dans une chaine</h1>
+    <br><br>
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p> 
+        Ecrire un programme Javascript qui permet de calculer le nombre de voyelles (a,e,i,o,u,y) dans une phrase saisie par l’utilisateur
+      </p>
+    </div>
+    <br><br>
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+        <div class="d-flex" >
+            <div>
+                <p>Saisir une phrase</p>
+            </div>
+            <div class="width30">
+                <input class="width90" id="stringtocount" type="text" >
+            </div>
+            <div class="center-item ">
+                <button onclick="countthestring();">Compter le nombre de voyelles </button>
+            </div>
+            </div>
+            <br><br>
+            <div class="darkbg" >
+                <p>La phrase que vous avez saisi contient <span id="stringtocountresult">??</span>  voyelles  </p>
+            </div>
+    </div>
+    <br><br>
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>  
+        var stringtocountvar = stringtocount.value.length ;
+        stringtocountresult.innerHTML = stringtocountvar ;
+      </pre>
+    </div>
+<script>
+function countthestring(){
+  function vowelCount(str) {
+  return str.replace(/[^aeiou]/gi, "").length;
+};
+var stringtocountvar = stringtocount.value ;
+stringtocountresult.innerHTML = vowelCount(stringtocountvar) ;
+}
+</script>
+  </section>
+  <section class="x9">
+    <h1>Tri d’un tableau</h1>
+    <br><br>
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p> 
+        Ecrire un programme Javascript qui permet de trier un tableau d’entier (Utiliser n’importe quel algorithme de tri mais surtout pas la fonction Sort de l’objet Array).
+L’utilisateur commence tout d’abord par saisir la taille du tableau, ensuite il remplit le tableau pour cliquer à la fin sur un bouton trier : celui-ci affichera le tableau en ordre croissant ou décroissant.
+      </p>
+    </div>
+    <br><br>
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+      <div class="d-flex">
+        <div>
+            <p>Donner la taille du tableau</p>
+        </div>
+        <div>
+            <input  id="tablesize" type="text" >
+        </div>
+        <div class="center-item ">
+            <button onclick="makethetable()" >Valider</button>
+        </div>
+        </div>
+        <div class="d-flex">
+          <div  class="center-item ">
+              <p >Veuiller remplir le tableau</p>
+          </div>
+          <div id="createherethefirsttable" class="d-flex flex-wrap darkbgcolor" >
+          </div>
+          <div class="center-item ">
+              <button onclick="triletableau()" >Trier</button>
+          </div>
+          </div>
+          <div class="darkbg" >
+            <p> Le tableau reafficher ici après son tri </p>
+            <div class="d-flex flex-wrap darkbgcolor " id="sectable" >
+                        </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>  
+        function makethetable(){
+          createherethefirsttable.innerHTML = "";
+          for( i=1 ; i < Number(tablesize.value) + 1 ; i++){
+          <!-- createherethefirsttable.innerHTML += '<input type="text" class="inputtable" id="inputtable'+i+ '">'; -->
+          }
+        }
+        const tablearray1 = [];
+        function triletableau(){
+        tablearray1.length = 0 ;
+          sectable.innerHTML = "";
+        var i;
+         for( i=1 ; i < Number(tablesize.value) + 1 ; i++){
+        let  theid = "inputtable"+ i ;
+        console.log(document.getElementById(theid).value);
+          tablearray1.push(Number(document.getElementById(theid).value));
+        }
+        function tri(table) {
+        for(var i = 0;i<table.length;i++){
+            for(var j= i+1;j<table.length;j++){
+                if(table[i]>table[j]){
+                    var swap = table[i];
+                    table[i] = table[j];
+                    table[j] = swap;
+                }
+            }
+        }
+        }
+        tri(tablearray1);
+        for( i=0 ; i < Number(tablesize.value) ; i++){
+        <!-- sectable.innerHTML += '<input type="text" class="inputtable" id="inputtableTwo'+i+ '">'; -->
+        }
+        for( i=0 ; i < Number(tablesize.value) ; i++){
+        let  theid = "inputtableTwo"+ i ;
+        document.getElementById(theid).value = tablearray1[i];
+        }
+        }
+</pre>
+    </div>
+    <script>
+function makethetable(){
+  createherethefirsttable.innerHTML = "";
+  for( i=1 ; i < Number(tablesize.value) + 1 ; i++){
+  createherethefirsttable.innerHTML += '<input type="text" class="inputtable" id="inputtable'+i+ '">';
+  }
+}
+const tablearray1 = [];
+function triletableau(){
+tablearray1.length = 0 ;
+  sectable.innerHTML = "";
+var i;
+ for( i=1 ; i < Number(tablesize.value) + 1 ; i++){
+let  theid = "inputtable"+ i ;
+console.log(document.getElementById(theid).value);
+  tablearray1.push(Number(document.getElementById(theid).value));
+}
+function tri(table) {
+for(var i = 0;i<table.length;i++){
+    for(var j= i+1;j<table.length;j++){
+        if(table[i]>table[j]){
+            var swap = table[i];
+            table[i] = table[j];
+            table[j] = swap;
+        }
+    }
+}
+}
+tri(tablearray1);
+for( i=0 ; i < Number(tablesize.value) ; i++){
+sectable.innerHTML += '<input type="text" class="inputtable" id="inputtableTwo'+i+ '">';
+}
+for( i=0 ; i < Number(tablesize.value) ; i++){
+let  theid = "inputtableTwo"+ i ;
+document.getElementById(theid).value = tablearray1[i];
+}
+}
+    </script>
+  </section>
+  <section class="x10">
+    <h1>Recherche dans un tableau</h1>
+    <br /><br />
+    <div class="headingsection">Enoncé</div>
+    <div class="paragraphsection">
+      <p>
+        Ecrire un programme Javascript qui permet de rechercher une valeur
+        dans un tableau d’entier. L’utilisateur doit suivre les étapes
+        suivantes : 1. Saisir la taille du tableau, 2. Remplir le tableau par
+        des entiers 3. Introduire la valeur à rechercher 4. Cliquer sur le
+        boutons « Rechercher » Le programme affiche ensuite un message si la
+        valeur à rechercher existe ou non dans le tableau.
+      </p>
+    </div>
+    <br /><br />
+    <div class="headingsection">Démo</div>
+    <div class="paragraphsection">
+      <div class="d-flex">
+        <div>
+          <p id="tailletabl">Donner la taille du tableau</p>
+        </div>
+        <div>
+          <input id="saisie" type="text" />
+        </div>
+        <div class="center-item">
+          <button onclick="creationInput()">Valider</button>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="center-item">
+          <p>Veuiller remplir le tableau</p>
+        </div>
+        <div class="d-flex flex-wrap darkbgcolor" id="inputtab">
+        </div>
+      </div>
+      <div class="d-flex">
+        <div>
+          <p id="recherchelavaleur">
+            Donner la valeur à rechercher dans le tableau
+          </p>
+        </div>
+        <div>
+          <input type="text" id="searchforthisword" />
+        </div>
+        <div class="center-item">
+          <button onclick="searchinarray()">Rechercher</button>
+        </div>
+      </div>
+      <div class="darkbg">
+        <p id="searchforthiswordresult">
+          Le resultat de la recherche s’affiche ici
+        </p>
+      </div>
+    </div>
+    <br /><br />
+    <div class="headingsection">Code source</div>
+    <div class="paragraphsection">
+      <pre>
+        const arraysearch = [];
+        var tailletabl = document.getElementById("tailletabl").value;
+        var recherchelavaleur =
+          document.getElementById("recherchelavaleur").value;
+        var valid = document.getElementById("valid");
+        var search = document.getElementById("search");
+        var utilisaisie = document.getElementById("saisie").value;
+        var inputtab = document.getElementById("inputtab");
+        function creationInput() {
+          inputtab.innerHTML = "";
+          for (i = 1; i < Number(saisie.value) + 1; i++) {
+            console.log("fqsdfsdf");
+            inputtab.innerHTML +=
+              <!-- <input type="text" class="inputtable" id="inputtable' + i + '" >; -->
+          }
+        }
+        function searchinarray() {
+          for (i = 1; i < Number(saisie.value) + 1; i++) {
+            arraysearch.push(document.getElementById("inputtable" + i).value);
+          }
+          if (searchInArray(arraysearch, searchforthisword.value) == true) {
+            searchforthiswordresult.innerHTML =
+              "this world <b> " + searchforthisword.value + "  </b>  exist";
+          } else {
+            searchforthiswordresult.innerHTML =
+              "this world <b>" + searchforthisword.value + "  </b> not exist";
+          }
+        }
+        function searchInArray(thearray, thekeyword) {
+          for (i = 0; i < thearray.length; i++) {
+            if (thearray[i] == thekeyword) {
+              return true;
+            }
+          }
+        }
+        </pre
+      >
+    </div>
+  </main>
+  <script>
+    const arraysearch = [];
+    var tailletabl = document.getElementById("tailletabl").value;
+    var recherchelavaleur =
+      document.getElementById("recherchelavaleur").value;
+    var valid = document.getElementById("valid");
+    var search = document.getElementById("search");
+    var utilisaisie = document.getElementById("saisie").value;
+    var inputtab = document.getElementById("inputtab");
+    function creationInput() {
+      inputtab.innerHTML = "";
+      for (i = 1; i < Number(saisie.value) + 1; i++) {
+        console.log("fqsdfsdf");
+        inputtab.innerHTML +=
+          '<input type="text" class="inputtable" id="inputtable' + i + '" >';
+      }
+    }
+    function searchinarray() {
+      for (i = 1; i < Number(saisie.value) + 1; i++) {
+        arraysearch.push(document.getElementById("inputtable" + i).value);
+      }
+      if (searchInArray(arraysearch, searchforthisword.value) == true) {
+        searchforthiswordresult.innerHTML =
+          "this world <b> " + searchforthisword.value + "  </b>  exist";
+      } else {
+        searchforthiswordresult.innerHTML =
+          "this world <b>" + searchforthisword.value + "  </b> not exist";
+      }
+    }
+    function searchInArray(thearray, thekeyword) {
+      for (i = 0; i < thearray.length; i++) {
+        if (thearray[i] == thekeyword) {
+          return true;
+        }
+      }
+    }
+  </script>
+</section>
+</main>
+<script>
+let tabs = document.querySelectorAll(".tabs a");
+let tabsArray = Array.from(tabs);
+let divs = document.querySelectorAll(".content > section");
+let divsArray = Array.from(divs);
+tabsArray.forEach((ele) => {
+  ele.addEventListener("click", function (e) {
+    // console.log(ele);
+    tabsArray.forEach((ele) => {
+      ele.classList.remove("active");
+    });
+    e.currentTarget.classList.add("active");
+    divsArray.forEach((div) => {
+      div.style.display = "none";
+    });
+    // console.log(e.currentTarget.dataset.cont);
+    document.querySelector(e.currentTarget.dataset.cont).style.display = "block";
+  });
+});
+</script>
+</body>
+</html>
